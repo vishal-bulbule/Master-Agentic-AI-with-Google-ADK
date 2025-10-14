@@ -1,0 +1,70 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+.env
+.venv/
+env/
+venv/
+
+# Logs
+logs/
+*.log
+debug.log
+error.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build / dist
+dist/
+build/
+out/
+*.egg
+*.manifest
+
+# Environment / Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+*.p12
+*.json
+
+# Cache
+.cache/
+.tmp/
+temp/
+*.bak
+
+# Coverage / testing
+coverage/
+*.coverage
+*.lcov
+.nyc_output/
+
+# Other
+*.zip
+*.tar
+*.gz
+*.7z
