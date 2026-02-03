@@ -10,6 +10,7 @@ adk deploy agent_engine
 	
 adk deploy agent_engine --project=tt-labs-001 --region=us-central1 --staging_bucket=gs://bkt-agentengine-demo-001 --display_name="My Agent Name" ./content_creation_agent
 
+adk deploy agent_engine --project=tt-labs-001 --region=us-central1 --staging_bucket=gs://bkt-agentengine-demo-001 --display_name="research_agent" ./retail_ai_location_strategy
 
 ##https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/use/adk#rest-api
 
