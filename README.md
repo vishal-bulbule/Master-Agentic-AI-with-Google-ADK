@@ -3,10 +3,11 @@
 
 # Master Agentic AI with Google ADK
 
-**Build, test and deploy AI agents with the Google Agent Development Kit (ADK):
-117 runnable Python agents covering tools, MCP, A2A, multi-agent workflows,
-sessions and memory, RAG and grounding, the Live API, evaluation, observability
-and deployment to Cloud Run and Agent Runtime.**
+## 100+ ADK code samples covering every major ADK feature
+
+Runnable Python agents for the Google Agent Development Kit: tools, MCP, A2A,
+multi-agent workflows, sessions and memory, RAG, the Live API, evaluation and
+deployment. Run any of them with `adk web`.
 
 [![ADK](https://img.shields.io/badge/Google%20ADK-2.9.2-4285F4?logo=google&logoColor=white)](https://adk.dev)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
@@ -15,56 +16,53 @@ and deployment to Cloud Run and Agent Runtime.**
 [![Stars](https://img.shields.io/github/stars/vishal-bulbule/Master-Agentic-AI-with-Google-ADK?style=flat&color=0C56DC)](https://github.com/vishal-bulbule/Master-Agentic-AI-with-Google-ADK/stargazers)
 [![YouTube](https://img.shields.io/badge/YouTube-Master%20Agentic%20AI%20with%20ADK-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PLLrA_pU9-Gz2HwepRUVpq1TEPuYWo_fSi)
 
-> **About me** - I am **Vishal Bulbule**, founder of [TechTrapture](https://www.techtrapture.com),
-> a Google Developer Expert for Google Cloud and AI, and an enterprise architect.
-> I contribute to the open-source [Google ADK](https://github.com/google/adk-python)
-> project, teach Agentic AI and MCP through [TechTrapture Academy](https://academy.techtrapture.com),
-> and have been publishing Google Cloud content on [YouTube](https://youtube.com/@techtrapture) for 5 years.
+> **About me**
 >
-> This repository is the code behind the **Master Agentic AI with Google ADK**
-> playlist, rebuilt and tested on current ADK.
+> - **Vishal Bulbule**, founder of [TechTrapture](https://www.techtrapture.com)
+> - Google Developer Expert for Google Cloud and AI, enterprise architect
+> - Contributor to the open-source [Google ADK](https://github.com/google/adk-python) project
+> - Teaching Agentic AI and MCP at [TechTrapture Academy](https://academy.techtrapture.com)
+> - 5 years of Google Cloud content on [YouTube](https://youtube.com/@techtrapture)
 
-Sixteen modules take you from a raw Gemini API call to a deployed, evaluated
-multi-agent system. Each topic folder holds one ADK feature as a standalone
-agent you run in the dev UI with `adk web`, with a README that lists its
-prerequisites, the exact command, and what to look for.
+This is the code behind the **Master Agentic AI with Google ADK** playlist,
+rebuilt and tested on ADK 2.9.2 (google-genai 2.24, mcp 2.2, fastmcp 4.0,
+a2a-sdk 1.1, Python 3.12, `gemini-3.5-flash`), verified 2026-09-22.
 
-Every sample runs on **ADK 2.9.2**, verified on 2026-09-22 with google-genai
-2.24, mcp 2.2, fastmcp 4.0 and a2a-sdk 1.1 on Python 3.12, using
-`gemini-3.5-flash`.
+<details>
+<summary><b>Topics covered</b></summary>
 
-**Topics:** Google ADK tutorial, AI agents in Python, LlmAgent, function
-tools, OpenAPI tools, Model Context Protocol (MCP) clients and servers,
-FastMCP, Agent2Agent (A2A) protocol, sequential, parallel and loop workflows,
-`Workflow` graphs, callbacks and plugins, guardrails, sessions, state and
-long-term memory, artifacts, Google Search grounding, Vertex AI Search, agentic
-RAG, streaming and the Live API for voice agents, `adk eval`, rubric metrics,
-OpenTelemetry tracing, Cloud Run and Agent Runtime deployment, Secret Manager,
-CI/CD with GitHub Actions.
+Google ADK tutorial, AI agents in Python, LlmAgent, function tools, OpenAPI
+tools, Model Context Protocol (MCP) clients and servers, FastMCP, Agent2Agent
+(A2A) protocol, sequential, parallel and loop workflows, `Workflow` graphs,
+callbacks and plugins, guardrails, sessions, state and long-term memory,
+artifacts, Google Search grounding, Vertex AI Search, agentic RAG, streaming
+and the Live API for voice agents, `adk eval`, rubric metrics, OpenTelemetry
+tracing, Cloud Run and Agent Runtime deployment, Secret Manager, CI/CD with
+GitHub Actions.
+
+</details>
 
 ## Want to learn Agentic AI with guidance?
 
-This repository is free and self-paced. If you would rather learn it in a
-cohort, with live sessions, real deployments and feedback on your own agents,
-join the next **[TechTrapture Academy](https://academy.techtrapture.com)**
-cohort on Agentic AI and Google Cloud.
+This repository is free and self-paced. For live sessions, real deployments
+and feedback on your own agents, join the next
+**[TechTrapture Academy](https://academy.techtrapture.com)** cohort.
 
 **[Join the next cohort](https://academy.techtrapture.com)**
 
 ## What is covered
 
-- The ADK 2.x `Workflow` graph API for pipelines, fan-out, joins and loops,
-  alongside the `SequentialAgent`, `ParallelAgent` and `LoopAgent` classes it
-  replaces
-- MCP in both directions: consuming servers with `McpToolset`, and building
-  servers with FastMCP and the low-level `mcp` server API
-- A2A 1.0: exposing an agent with `to_a2a` and calling it with `RemoteA2aAgent`
-- Callbacks at all six hook points, plugins, skills, and guardrails
-- Sessions, state prefixes, memory, artifacts, and session rewind
-- The Live API for voice agents, and token streaming
-- Evaluation with `adk eval`, pytest, rubric and custom metrics, plus
-  OpenTelemetry tracing
-- Deployment to Cloud Run and Agent Runtime, with Secret Manager and CI/CD
+- **Workflows**: the ADK 2.x `Workflow` graph API for pipelines, fan-out,
+  joins and loops, next to the `SequentialAgent`, `ParallelAgent` and
+  `LoopAgent` classes it replaces
+- **MCP**, both directions: `McpToolset` clients, and servers built with
+  FastMCP and the low-level `mcp` API
+- **A2A 1.0**: expose an agent with `to_a2a`, call it with `RemoteA2aAgent`
+- **Callbacks** at all six hook points, plus plugins, skills and guardrails
+- **Memory**: sessions, state prefixes, long-term memory, artifacts, rewind
+- **Voice and streaming**: the Live API, and token streaming
+- **Evaluation**: `adk eval`, pytest, rubric and custom metrics, OpenTelemetry
+- **Deployment**: Cloud Run and Agent Runtime, Secret Manager, CI/CD
 
 ## Quick start
 
