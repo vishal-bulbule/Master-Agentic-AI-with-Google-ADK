@@ -1,0 +1,103 @@
+{
+  "eval_set_id": "research_agent_rubric_cases",
+  "name": "Research agent rubric eval",
+  "description": "Three cases judged by the cites_a_source_url rubric. No reference answer.",
+  "eval_cases": [
+    {
+      "eval_id": "case_1_ada",
+      "conversation": [
+        {
+          "invocation_id": "inv-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Who is Ada Lovelace?"
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "lookup_person",
+                "args": {
+                  "name": "Ada Lovelace"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "research_agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "case_2_alan",
+      "conversation": [
+        {
+          "invocation_id": "inv-2",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Tell me about Alan Turing."
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "lookup_person",
+                "args": {
+                  "name": "Alan Turing"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "research_agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "case_3_grace",
+      "conversation": [
+        {
+          "invocation_id": "inv-3",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Who was Grace Hopper?"
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "lookup_person",
+                "args": {
+                  "name": "Grace Hopper"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "research_agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    }
+  ]
+}

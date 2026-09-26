@@ -1,0 +1,95 @@
+{
+  "eval_set_id": "user_simulation",
+  "name": "user_simulation",
+  "description": "Conversation scenarios for subscription_agent. An LLM plays the customer; there are no fixed user turns or reference answers.",
+  "eval_cases": [
+    {
+      "eval_id": "determined_to_cancel",
+      "conversation_scenario": {
+        "starting_prompt": "I want to cancel my subscription. Now.",
+        "conversation_plan": "You want to cancel your subscription. Your account email is sam@example.com; give it when asked. Refuse any discount or retention offer, however generous. Once the agent confirms the subscription is cancelled, the conversation is over.",
+        "user_persona": {
+          "id": "FRUSTRATED_CUSTOMER",
+          "description": "A customer who has already decided to leave and is annoyed at being slowed down.",
+          "behaviors": [
+            {
+              "name": "Short and blunt",
+              "description": "Replies are short, blunt and slightly annoyed, but never abusive.",
+              "behavior_instructions": [
+                "Reply in one or two short sentences.",
+                "Do not thank the agent or use polite filler."
+              ],
+              "violation_rubrics": [
+                "The user response is longer than two sentences.",
+                "The user response is abusive or insulting."
+              ]
+            },
+            {
+              "name": "Refuses retention offers",
+              "description": "The customer turns down every discount or offer.",
+              "behavior_instructions": [
+                "Decline any discount, pause or downgrade the agent offers."
+              ],
+              "violation_rubrics": [
+                "The user accepts or shows interest in a discount or offer."
+              ]
+            },
+            {
+              "name": "Ends the conversation",
+              "description": "A custom persona must say when the conversation is over; the pre-built personas include this behavior.",
+              "behavior_instructions": [
+                "When the agent has completed everything in the Conversation Plan, reply with `{{ stop_signal }}` and nothing else."
+              ],
+              "violation_rubrics": [
+                "The conversation plan is complete, but the user response did not use `{{ stop_signal }}`."
+              ]
+            }
+          ]
+        }
+      },
+      "session_input": {
+        "app_name": "subscription_agent",
+        "user_id": "user",
+        "state": {}
+      },
+      "rubrics": [
+        {
+          "rubric_id": "cancels_when_asked",
+          "rubric_content": {
+            "text_property": "By the end of the conversation the agent has cancelled the subscription and told the customer when access ends."
+          },
+          "type": "TRAJECTORY_QUALITY"
+        },
+        {
+          "rubric_id": "offers_at_most_once",
+          "rubric_content": {
+            "text_property": "The agent makes at most one retention offer and does not repeat it after the customer declines."
+          },
+          "type": "TRAJECTORY_QUALITY"
+        }
+      ]
+    },
+    {
+      "eval_id": "accepts_discount",
+      "conversation_scenario": {
+        "starting_prompt": "Hi, I'm thinking about cancelling. It's getting a bit expensive for me.",
+        "conversation_plan": "You are considering cancelling because of the price. Your account email is priya@example.com; give it when asked. If the agent offers a discount, accept it and do not cancel. Once the agent confirms the discount is applied, the conversation is over.",
+        "user_persona": "NOVICE"
+      },
+      "session_input": {
+        "app_name": "subscription_agent",
+        "user_id": "user",
+        "state": {}
+      },
+      "rubrics": [
+        {
+          "rubric_id": "keeps_customer_with_discount",
+          "rubric_content": {
+            "text_property": "The agent applies the retention discount and does not cancel the subscription."
+          },
+          "type": "TRAJECTORY_QUALITY"
+        }
+      ]
+    }
+  ]
+}

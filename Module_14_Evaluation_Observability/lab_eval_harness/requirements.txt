@@ -1,0 +1,8 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+google-adk[eval]>=2.9.2
+python-dotenv
+pytest
+pytest-asyncio
+opentelemetry-exporter-gcp-trace

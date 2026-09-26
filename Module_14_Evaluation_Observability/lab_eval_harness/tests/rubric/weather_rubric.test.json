@@ -1,0 +1,207 @@
+{
+  "eval_set_id": "lab14_weather_rubric",
+  "name": "Weather agent, rubric-judged cases",
+  "description": "5 cases with no reference answer; each carries its own rubric on top of the shared one in test_config.json.",
+  "eval_cases": [
+    {
+      "eval_id": "rubric_concise_paris",
+      "conversation": [
+        {
+          "invocation_id": "r-07",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Paris weather in one short sentence."
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Paris"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u7",
+        "state": {}
+      },
+      "rubrics": [
+        {
+          "rubric_id": "concise",
+          "rubric_content": {
+            "text_property": "The response is one or two short sentences, with no filler and no extra commentary."
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "rubric_temp_included",
+      "conversation": [
+        {
+          "invocation_id": "r-08",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Tell me the weather in Bengaluru."
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Bengaluru"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u8",
+        "state": {}
+      },
+      "rubrics": [
+        {
+          "rubric_id": "includes_temperature",
+          "rubric_content": {
+            "text_property": "The response states the temperature in degrees Celsius."
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "rubric_no_speculation",
+      "conversation": [
+        {
+          "invocation_id": "r-09",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Will it rain in London tomorrow?"
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "London"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u9",
+        "state": {}
+      },
+      "rubrics": [
+        {
+          "rubric_id": "no_forecast",
+          "rubric_content": {
+            "text_property": "The response does not predict tomorrow's weather. It either says it only has current conditions or gives only the current conditions."
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "rubric_acknowledge_query",
+      "conversation": [
+        {
+          "invocation_id": "r-10",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What's the temperature in Tokyo right now?"
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Tokyo"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u10",
+        "state": {}
+      },
+      "rubrics": [
+        {
+          "rubric_id": "names_the_city",
+          "rubric_content": {
+            "text_property": "The response names the city the user asked about."
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "rubric_edge_polite_refusal",
+      "conversation": [
+        {
+          "invocation_id": "r-15",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What's the weather in Narnia?"
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Narnia"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u15",
+        "state": {}
+      },
+      "rubrics": [
+        {
+          "rubric_id": "polite_refusal",
+          "rubric_content": {
+            "text_property": "The response says briefly that no data is available for the city, does not pretend to know the weather, and asks the user to check the city name."
+          }
+        }
+      ]
+    }
+  ]
+}

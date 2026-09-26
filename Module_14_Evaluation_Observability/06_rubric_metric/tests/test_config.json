@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "rubric_based_final_response_quality_v1": {
+      "threshold": 0.8,
+      "judge_model_options": {
+        "judge_model": "gemini-3.5-flash",
+        "num_samples": 3
+      },
+      "rubrics": [
+        {
+          "rubric_id": "cites_a_source_url",
+          "rubric_content": {
+            "text_property": "The response includes an http(s):// URL pointing to the source the agent used. A hand-wave like 'see Wikipedia' without an actual link does not count."
+          }
+        }
+      ]
+    }
+  }
+}

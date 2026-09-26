@@ -1,0 +1,212 @@
+{
+  "eval_set_id": "customer_service_regression",
+  "name": "Customer service multi-session regression",
+  "description": "Four sessions covering happy and edge paths for refunds, shipping, and escalation.",
+  "eval_cases": [
+    {
+      "eval_id": "session_01_shipping_status",
+      "conversation": [
+        {
+          "invocation_id": "e-01-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Where is my order A100?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Order A100 has shipped via BlueDart and arrives in about 2 days."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "lookup_order",
+                "args": {
+                  "order_id": "A100"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_service",
+        "user_id": "user_001",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "session_02_refund_happy_path",
+      "conversation": [
+        {
+          "invocation_id": "e-02-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "I need to refund order A102 for $49."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Done. Refund R-A102-49 has been issued for order A102."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "lookup_order",
+                "args": {
+                  "order_id": "A102"
+                }
+              },
+              {
+                "name": "issue_refund",
+                "args": {
+                  "order_id": "A102",
+                  "amount": 49
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_service",
+        "user_id": "user_002",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "session_03_unknown_order_escalation",
+      "conversation": [
+        {
+          "invocation_id": "e-03-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Refund order Z999 please."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "I can't find order Z999 in our system, so I have passed this to a human agent who will follow up."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "lookup_order",
+                "args": {
+                  "order_id": "Z999"
+                }
+              },
+              {
+                "name": "escalate_to_human",
+                "args": {
+                  "order_id": "Z999",
+                  "category": "unknown_order"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_service",
+        "user_id": "user_003",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "session_04_multi_turn_status_then_refund",
+      "conversation": [
+        {
+          "invocation_id": "e-04-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What's the status of A101?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Order A101 is still processing and should ship within about 5 days."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "lookup_order",
+                "args": {
+                  "order_id": "A101"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        },
+        {
+          "invocation_id": "e-04-2",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Too slow, please refund it, $30."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Refund R-A101-30 has been issued for order A101."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "issue_refund",
+                "args": {
+                  "order_id": "A101",
+                  "amount": 30
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_service",
+        "user_id": "user_004",
+        "state": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "rubric_based_multi_turn_trajectory_quality_v1": {
+      "threshold": 1.0,
+      "judge_model_options": {
+        "judge_model": "gemini-3.5-flash",
+        "num_samples": 3
+      },
+      "rubrics": []
+    },
+    "per_turn_user_simulator_quality_v1": {
+      "threshold": 0.8,
+      "judge_model_options": {
+        "judge_model": "gemini-3.5-flash",
+        "num_samples": 1
+      },
+      "stop_signal": "</finished>"
+    }
+  },
+  "user_simulator_config": {
+    "type": "llm_backed",
+    "model": "gemini-3.5-flash",
+    "max_allowed_invocations": 6
+  }
+}

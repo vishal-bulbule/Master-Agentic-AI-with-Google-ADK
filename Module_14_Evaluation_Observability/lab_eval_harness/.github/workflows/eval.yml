@@ -1,0 +1,48 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+# Runs the lab eval suite on every push and pull request to main.
+#
+# GitHub only reads workflows from .github/workflows/ at the repository root.
+# Copy this file there and keep LAB_DIR pointing at the folder with conftest.py.
+
+name: eval
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  LAB_DIR: Module_14_Evaluation_Observability/lab_eval_harness
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: ${{ env.LAB_DIR }}/requirements.txt
+
+      - name: Install dependencies
+        working-directory: ${{ env.LAB_DIR }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run eval suite
+        working-directory: ${{ env.LAB_DIR }}
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_GENAI_USE_ENTERPRISE: "FALSE"
+        run: pytest -v --tb=short

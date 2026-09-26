@@ -1,0 +1,11 @@
+{
+  "criteria": {
+    "hallucinations_v1": {
+      "threshold": 0.8,
+      "judge_model_options": {
+        "judge_model": "gemini-3.5-flash"
+      },
+      "evaluate_intermediate_nl_responses": false
+    }
+  }
+}

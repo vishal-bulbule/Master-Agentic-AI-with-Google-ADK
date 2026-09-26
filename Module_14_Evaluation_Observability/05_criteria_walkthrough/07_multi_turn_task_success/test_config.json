@@ -1,0 +1,5 @@
+{
+  "criteria": {
+    "multi_turn_task_success_v1": 0.8
+  }
+}

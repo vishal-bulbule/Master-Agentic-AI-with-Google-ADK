@@ -1,0 +1,406 @@
+{
+  "eval_set_id": "lab14_weather_reference",
+  "name": "Weather agent, reference-based cases",
+  "description": "6 happy-path and 4 edge cases scored against reference answers.",
+  "eval_cases": [
+    {
+      "eval_id": "happy_paris",
+      "conversation": [
+        {
+          "invocation_id": "h-01",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What's the weather in Paris?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "It's sunny in Paris, around 22 C."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Paris"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u1",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "happy_london",
+      "conversation": [
+        {
+          "invocation_id": "h-02",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Weather in London?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "London is drizzly at about 12 C."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "London"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u2",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "happy_tokyo",
+      "conversation": [
+        {
+          "invocation_id": "h-03",
+          "user_content": {
+            "parts": [
+              {
+                "text": "How's the weather in Tokyo today?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Tokyo is cloudy at around 19 C."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Tokyo"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u3",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "happy_mumbai",
+      "conversation": [
+        {
+          "invocation_id": "h-04",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Weather in Mumbai?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Mumbai is humid with showers, around 31 C."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Mumbai"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u4",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "happy_new_york",
+      "conversation": [
+        {
+          "invocation_id": "h-05",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What's the weather in New York?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "New York is clear, around 18 C."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "New York"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u5",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "happy_sydney",
+      "conversation": [
+        {
+          "invocation_id": "h-06",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Sydney weather please."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Sydney is warm and breezy, around 24 C."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Sydney"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u6",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "edge_unknown_city",
+      "conversation": [
+        {
+          "invocation_id": "e-11",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Weather in Atlantis?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "I don't have weather data for Atlantis. Please check the city name."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Atlantis"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u11",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "edge_empty_city",
+      "conversation": [
+        {
+          "invocation_id": "e-12",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What's the weather in ?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Which city would you like the weather for?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u12",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "edge_typo_pariis",
+      "conversation": [
+        {
+          "invocation_id": "e-13",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Weather in Pariis?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "I don't have weather data for Pariis. Please check the city name."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Pariis"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u13",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "edge_multi_city_in_one_query",
+      "conversation": [
+        {
+          "invocation_id": "e-14",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What's the weather in Paris and London?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Paris is sunny at 22 C and London is drizzly at 12 C."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "Paris"
+                }
+              },
+              {
+                "name": "get_weather",
+                "args": {
+                  "city": "London"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_agent",
+        "user_id": "u14",
+        "state": {}
+      }
+    }
+  ]
+}

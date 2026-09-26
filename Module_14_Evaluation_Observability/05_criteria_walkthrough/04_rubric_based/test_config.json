@@ -1,0 +1,31 @@
+{
+  "criteria": {
+    "rubric_based_final_response_quality_v1": {
+      "threshold": 0.8,
+      "judge_model_options": {
+        "judge_model": "gemini-3.5-flash",
+        "num_samples": 5
+      },
+      "rubrics": [
+        {
+          "rubric_id": "conciseness",
+          "rubric_content": {
+            "text_property": "The agent's response is direct and to the point, no filler."
+          }
+        },
+        {
+          "rubric_id": "intent_inference",
+          "rubric_content": {
+            "text_property": "The agent's response accurately infers the user's underlying goal."
+          }
+        },
+        {
+          "rubric_id": "no_jargon",
+          "rubric_content": {
+            "text_property": "The agent avoids unexplained technical jargon."
+          }
+        }
+      ]
+    }
+  }
+}
