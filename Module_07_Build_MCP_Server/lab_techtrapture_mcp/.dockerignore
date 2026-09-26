@@ -1,0 +1,13 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+__pycache__/
+*.pyc
+.env
+.env.*
+.venv/
+venv/
+.git/
+*.md
+.DS_Store
+course_advisor/

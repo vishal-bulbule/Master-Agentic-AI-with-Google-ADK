@@ -1,0 +1,6 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+mcp>=2.2.0
+starlette>=0.37.0
+uvicorn>=0.30.0
