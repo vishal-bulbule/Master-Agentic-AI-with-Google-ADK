@@ -1,0 +1,77 @@
+{
+  "name": "product_catalog",
+  "description": "Answers questions about the product catalog: SKUs, prices, stock, and categories.",
+  "version": "1.0.0",
+  "supportedInterfaces": [
+    {
+      "url": "http://localhost:8081/a2a/product_catalog",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "Example Store",
+    "url": "https://example.com"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "extendedAgentCard": false,
+    "extensions": [
+      {
+        "uri": "https://google.github.io/adk-docs/a2a/a2a-extension/",
+        "description": "Ability to use the new agent executor implementation",
+        "required": false
+      }
+    ]
+  },
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "product_catalog",
+      "name": "model",
+      "description": "Answers questions about the product catalog: SKUs, prices, stock, and categories.",
+      "tags": [
+        "llm"
+      ]
+    },
+    {
+      "id": "product_catalog-lookup_product",
+      "name": "lookup_product",
+      "description": "Look up a product by its SKU. Returns name, category, price in INR, and stock status.",
+      "tags": [
+        "llm",
+        "tools"
+      ],
+      "examples": [
+        "How much is SKU-1001?"
+      ]
+    },
+    {
+      "id": "product_catalog-list_categories",
+      "name": "list_categories",
+      "description": "List the top-level product categories in the catalog.",
+      "tags": [
+        "llm",
+        "tools"
+      ],
+      "examples": [
+        "What kinds of products do you sell?"
+      ]
+    }
+  ],
+  "securitySchemes": {
+    "api_key": {
+      "apiKeySecurityScheme": {
+        "location": "header",
+        "name": "X-API-Key",
+        "description": "Static API key issued by the catalog team."
+      }
+    }
+  }
+}

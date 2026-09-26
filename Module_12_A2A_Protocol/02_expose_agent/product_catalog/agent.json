@@ -1,0 +1,45 @@
+{
+  "name": "product_catalog",
+  "description": "Answers questions about the product catalog: SKUs, prices, stock, and categories.",
+  "version": "1.0.0",
+  "supportedInterfaces": [
+    {
+      "url": "http://localhost:8081/a2a/product_catalog",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "capabilities": {
+    "streaming": true
+  },
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "product_catalog-lookup_product",
+      "name": "lookup_product",
+      "description": "Look up a product by its SKU. Returns name, category, price in INR, and stock status.",
+      "tags": [
+        "catalog"
+      ],
+      "examples": [
+        "How much is SKU-1001?"
+      ]
+    },
+    {
+      "id": "product_catalog-list_categories",
+      "name": "list_categories",
+      "description": "List the top-level product categories in the catalog.",
+      "tags": [
+        "catalog"
+      ],
+      "examples": [
+        "What kinds of products do you sell?"
+      ]
+    }
+  ]
+}

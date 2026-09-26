@@ -1,0 +1,34 @@
+{
+  "name": "researcher",
+  "description": "Research specialist. Searches for facts and returns compact, citation-ready findings.",
+  "version": "1.0.0",
+  "supportedInterfaces": [
+    {
+      "url": "http://localhost:8081/a2a/researcher",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "capabilities": {
+    "streaming": true
+  },
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "researcher-research",
+      "name": "research",
+      "description": "Given a topic, returns 3-6 bullet points of facts, each ending with its source URL.",
+      "tags": [
+        "research"
+      ],
+      "examples": [
+        "Research AI agent adoption in 2026."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "billing_agent",
+  "description": "Closes customer invoices. Asks the client which invoice when a customer has several open.",
+  "version": "1.0.0",
+  "supportedInterfaces": [
+    {
+      "url": "http://localhost:8081/a2a/billing_agent",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "capabilities": {
+    "streaming": true
+  },
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "billing_agent-close_invoice",
+      "name": "close_invoice",
+      "description": "Close a customer's open invoice. Pauses with INPUT_REQUIRED when the invoice is ambiguous.",
+      "tags": [
+        "billing"
+      ],
+      "examples": [
+        "Close the open invoice for Acme."
+      ]
+    }
+  ]
+}

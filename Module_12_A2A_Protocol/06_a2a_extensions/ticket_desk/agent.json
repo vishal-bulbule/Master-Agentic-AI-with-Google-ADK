@@ -1,0 +1,41 @@
+{
+  "name": "ticket_desk",
+  "description": "Answers questions about support tickets: status, priority, and owner.",
+  "version": "1.0.0",
+  "supportedInterfaces": [
+    {
+      "url": "http://localhost:8081/a2a/ticket_desk",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "capabilities": {
+    "streaming": true,
+    "extensions": [
+      {
+        "uri": "https://google.github.io/adk-docs/a2a/a2a-extension/",
+        "description": "Ability to use the new agent executor implementation",
+        "required": false
+      }
+    ]
+  },
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "ticket_desk-get_ticket",
+      "name": "get_ticket",
+      "description": "Look up a support ticket by ID. Returns status, priority, and owner.",
+      "tags": [
+        "support"
+      ],
+      "examples": [
+        "What is the status of ticket T-100?"
+      ]
+    }
+  ]
+}
