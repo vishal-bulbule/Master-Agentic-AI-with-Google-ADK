@@ -1,0 +1,59 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+openapi: 3.0.0
+info:
+  title: Tiny Pet Store
+  version: 1.0.0
+  description: A minimal Pet Store spec used to demo ADK's OpenAPIToolset.
+servers:
+  - url: https://httpbin.org
+    description: httpbin echoes the request back, so no backend or secret is needed.
+paths:
+  /anything/pets:
+    get:
+      operationId: list_pets
+      summary: List all pets in the store.
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Maximum number of pets to return (default 10).
+      responses:
+        "200":
+          description: A list of pets.
+    post:
+      operationId: create_pet
+      summary: Add a new pet to the store.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, species]
+              properties:
+                name:
+                  type: string
+                  description: The pet's name.
+                species:
+                  type: string
+                  description: e.g. dog, cat, parrot.
+      responses:
+        "201":
+          description: Pet was created.
+  /anything/pets/{petId}:
+    get:
+      operationId: get_pet
+      summary: Fetch a single pet by id.
+      parameters:
+        - in: path
+          name: petId
+          required: true
+          schema:
+            type: string
+          description: The id of the pet to fetch.
+      responses:
+        "200":
+          description: The pet record.
