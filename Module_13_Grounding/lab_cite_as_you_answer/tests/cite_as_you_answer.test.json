@@ -1,0 +1,112 @@
+{
+  "eval_set_id": "cite_as_you_answer",
+  "name": "Cite as you answer",
+  "description": "Five time-sensitive questions. Each answer must carry inline [source: URL] citations. No reference answer; judged by a rubric.",
+  "eval_cases": [
+    {
+      "eval_id": "io_2026",
+      "conversation": [
+        {
+          "invocation_id": "inv-1",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What were the most significant AI announcements at Google I/O 2026?"
+              }
+            ],
+            "role": "user"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "bengaluru_population",
+      "conversation": [
+        {
+          "invocation_id": "inv-2",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What is the current estimated population of Bengaluru, India?"
+              }
+            ],
+            "role": "user"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "cloud_run_features",
+      "conversation": [
+        {
+          "invocation_id": "inv-3",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What new features did Cloud Run release in the last six months?"
+              }
+            ],
+            "role": "user"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "world_cup_final",
+      "conversation": [
+        {
+          "invocation_id": "inv-4",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Who won the most recent FIFA World Cup final, and against whom?"
+              }
+            ],
+            "role": "user"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "gemini_sla",
+      "conversation": [
+        {
+          "invocation_id": "inv-5",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What is the monthly uptime SLA for Gemini models on Google Cloud?"
+              }
+            ],
+            "role": "user"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    }
+  ]
+}

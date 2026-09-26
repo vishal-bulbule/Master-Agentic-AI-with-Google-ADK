@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "rubric_based_final_response_quality_v1": {
+      "threshold": 0.8,
+      "judge_model_options": {
+        "judge_model": "gemini-3.5-flash",
+        "num_samples": 1
+      },
+      "rubrics": [
+        {
+          "rubric_id": "inline_source_tags",
+          "rubric_content": {
+            "text_property": "The response follows its factual claims with inline citations written as [source: <URL>], where <URL> is an http:// or https:// link. A response with no [source: ...] tag, or whose tags contain no URL, does not meet this."
+          }
+        }
+      ]
+    }
+  }
+}
