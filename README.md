@@ -44,11 +44,21 @@ GitHub Actions.
 
 ## Want to learn Agentic AI with guidance?
 
-This repository is free and self-paced. For live sessions, real deployments
-and feedback on your own agents, join the next
-**[TechTrapture Academy](https://academy.techtrapture.com)** cohort.
+<a href="https://academy.techtrapture.com/batch/master-agentic-ai-with-google-cloud-sep">
+<img src="assets/cohort-master-agentic-ai.jpg" width="520" alt="Master Agentic AI with Google Cloud - live cohort at TechTrapture Academy"/>
+</a>
 
-**[Join the next cohort](https://academy.techtrapture.com)**
+**Master Agentic AI with Google Cloud** - a live cohort at
+[TechTrapture Academy](https://academy.techtrapture.com), taught by Vishal Bulbule.
+
+- 10 weekends, 20 sessions, 50+ hours. Saturdays and Sundays, 7:00 to 9:30 PM IST
+- 15 seats per cohort, with a hands-on Google Cloud sandbox
+- Lifetime access to recordings, a private community, and a certificate
+- Build production-grade agents with ADK and MCP, not toy demos
+
+**[View and enroll](https://academy.techtrapture.com/batch/master-agentic-ai-with-google-cloud-sep)**
+
+This repository stays free and self-paced.
 
 ## What is covered
 
