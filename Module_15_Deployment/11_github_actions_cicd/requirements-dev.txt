@@ -1,0 +1,8 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+# What CI installs to run the tests and the deploy command.
+google-adk[eval]>=2.9.2
+python-dotenv
+pytest
+pytest-asyncio

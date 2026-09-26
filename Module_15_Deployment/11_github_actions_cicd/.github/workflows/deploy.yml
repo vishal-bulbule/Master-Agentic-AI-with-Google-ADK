@@ -1,0 +1,82 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+# Eval-gated deploy: on every push to main, run the tests (unit tests and a
+# small eval against the real model), and deploy to Cloud Run only if they pass.
+#
+# GitHub only reads workflows from .github/workflows/ at the repository root.
+# Copy this file there and set AGENT_DIR to this folder's path.
+#
+# Auth is Workload Identity Federation: GitHub's OIDC token is exchanged for
+# short-lived Google credentials, so no service account key is stored.
+# Repository variables (Settings > Secrets and variables > Actions > Variables):
+#   GCP_PROJECT        project id
+#   WIF_PROVIDER       projects/<number>/locations/global/workloadIdentityPools/<pool>/providers/<provider>
+#   DEPLOYER_SA        deployer@<project>.iam.gserviceaccount.com
+
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  AGENT_DIR: Module_15_Deployment/11_github_actions_cicd
+  GCP_PROJECT: ${{ vars.GCP_PROJECT }}
+  GCP_REGION: us-central1
+  SERVICE_NAME: greet-agent
+
+jobs:
+  eval-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write  # required to request the OIDC token for WIF
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: ${{ env.AGENT_DIR }}/requirements-dev.txt
+
+      - name: Install dependencies
+        working-directory: ${{ env.AGENT_DIR }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.WIF_PROVIDER }}
+          service_account: ${{ vars.DEPLOYER_SA }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v3
+
+      # The eval calls Gemini through Agent Platform with the credentials from
+      # the auth step, so CI needs no API key. A failure here stops the job.
+      - name: Run tests and eval gate
+        working-directory: ${{ env.AGENT_DIR }}
+        env:
+          GOOGLE_GENAI_USE_ENTERPRISE: "TRUE"
+          GOOGLE_CLOUD_PROJECT: ${{ env.GCP_PROJECT }}
+          GOOGLE_CLOUD_LOCATION: global
+        run: pytest tests -v --tb=short
+
+      - name: Deploy to Cloud Run
+        working-directory: ${{ env.AGENT_DIR }}
+        run: |
+          adk deploy cloud_run \
+            --project="$GCP_PROJECT" \
+            --region="$GCP_REGION" \
+            --service_name="$SERVICE_NAME" \
+            --env GOOGLE_CLOUD_LOCATION=global \
+            ./greet_agent \
+            -- --no-allow-unauthenticated

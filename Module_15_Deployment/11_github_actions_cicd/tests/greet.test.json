@@ -1,0 +1,37 @@
+{
+  "eval_set_id": "greet_agent_gate",
+  "name": "greet_agent deploy gate",
+  "description": "Two cases that must pass before a deploy.",
+  "eval_cases": [
+    {
+      "eval_id": "greet_priya",
+      "conversation": [
+        {
+          "invocation_id": "inv-1",
+          "user_content": {"parts": [{"text": "Please greet Priya."}], "role": "user"},
+          "final_response": {"parts": [{"text": "Hello, Priya!"}], "role": "model"},
+          "intermediate_data": {
+            "tool_uses": [{"name": "greet", "args": {"name": "Priya"}}],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {"app_name": "greet_agent", "user_id": "ci", "state": {}}
+    },
+    {
+      "eval_id": "greet_from_sentence",
+      "conversation": [
+        {
+          "invocation_id": "inv-2",
+          "user_content": {"parts": [{"text": "My name is Ravi, say hi to me."}], "role": "user"},
+          "final_response": {"parts": [{"text": "Hello, Ravi!"}], "role": "model"},
+          "intermediate_data": {
+            "tool_uses": [{"name": "greet", "args": {"name": "Ravi"}}],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {"app_name": "greet_agent", "user_id": "ci", "state": {}}
+    }
+  ]
+}

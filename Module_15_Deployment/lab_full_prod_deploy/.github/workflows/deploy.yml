@@ -1,0 +1,94 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+# Lab 15: eval-gated production deploy.
+#
+# On a push to main that touches the lab folder: authenticate with Workload
+# Identity Federation, run the tests and eval gate, then deploy with the same
+# production settings as deploy.sh. If a test fails, nothing is deployed.
+#
+# GitHub only reads workflows from .github/workflows/ at the repository root.
+# Copy this file there. Setup of the variables and the deployer service account:
+# ../11_github_actions_cicd/README.md.
+# Run setup_secrets.sh once beforehand; CI does not create secrets or IAM bindings.
+
+name: lab15-deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Module_15_Deployment/lab_full_prod_deploy/**"
+  workflow_dispatch:
+
+env:
+  LAB_DIR: Module_15_Deployment/lab_full_prod_deploy
+  GCP_PROJECT: ${{ vars.GCP_PROJECT }}
+  GCP_REGION: us-central1
+  SERVICE_NAME: greet-agent-prod
+  SECRET_NAME: GOOGLE_API_KEY
+
+jobs:
+  eval-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: ${{ env.LAB_DIR }}/requirements-dev.txt
+
+      - name: Install dependencies
+        working-directory: ${{ env.LAB_DIR }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.WIF_PROVIDER }}
+          service_account: ${{ vars.DEPLOYER_SA }}
+
+      - uses: google-github-actions/setup-gcloud@v3
+
+      - name: Run tests and eval gate
+        working-directory: ${{ env.LAB_DIR }}
+        env:
+          GOOGLE_GENAI_USE_ENTERPRISE: "TRUE"
+          GOOGLE_CLOUD_PROJECT: ${{ env.GCP_PROJECT }}
+          GOOGLE_CLOUD_LOCATION: global
+        run: pytest tests -v --tb=short
+
+      - name: Deploy to Cloud Run
+        working-directory: ${{ env.LAB_DIR }}
+        run: |
+          adk deploy cloud_run \
+            --project="$GCP_PROJECT" \
+            --region="$GCP_REGION" \
+            --service_name="$SERVICE_NAME" \
+            --trace_to_cloud \
+            --env GOOGLE_GENAI_USE_ENTERPRISE=FALSE \
+            ./greet_agent \
+            -- \
+            --no-allow-unauthenticated \
+            --update-secrets="GOOGLE_API_KEY=${SECRET_NAME}:latest" \
+            --min-instances=0 \
+            --max-instances=10 \
+            --concurrency=4 \
+            --cpu=2 \
+            --memory=2Gi
+
+      - name: Print service URL
+        run: |
+          gcloud run services describe "$SERVICE_NAME" \
+            --project="$GCP_PROJECT" \
+            --region="$GCP_REGION" \
+            --format="value(status.url)"

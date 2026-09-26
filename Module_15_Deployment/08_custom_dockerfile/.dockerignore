@@ -1,0 +1,24 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+# Keep secrets, dev junk, and big files out of the build context.
+.env
+.env.*
+!.env.example
+*.pyc
+__pycache__/
+.venv/
+venv/
+.git/
+.gitignore
+.idea/
+.vscode/
+*.db
+sessions.db
+*.log
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+README.md

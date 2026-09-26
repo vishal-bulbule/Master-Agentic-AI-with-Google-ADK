@@ -1,0 +1,8 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+# Keep local secrets and run history out of the deployed image.
+# `adk deploy` reads this file when it copies the agent folder.
+.env
+.adk/
+__pycache__/

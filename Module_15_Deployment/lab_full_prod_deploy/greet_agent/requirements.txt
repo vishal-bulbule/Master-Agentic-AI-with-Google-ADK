@@ -1,0 +1,6 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+google-adk>=2.9.2
+# Used by `adk deploy cloud_run --trace_to_cloud` to export spans to Cloud Trace.
+opentelemetry-exporter-gcp-trace>=1.9

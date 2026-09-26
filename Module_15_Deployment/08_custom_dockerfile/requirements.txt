@@ -1,0 +1,7 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+google-adk>=2.9.2
+fastapi>=0.110.0
+uvicorn[standard]>=0.30.0
+aiosqlite>=0.20.0
