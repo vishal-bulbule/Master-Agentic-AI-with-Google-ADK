@@ -1,0 +1,4 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
+Release checklist: run the unit tests, bump the version in pyproject.toml, tag the commit, then publish.
