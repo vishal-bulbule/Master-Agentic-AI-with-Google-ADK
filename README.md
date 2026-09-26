@@ -51,11 +51,6 @@ GitHub Actions.
 **Master Agentic AI with Google Cloud** - a live cohort at
 [TechTrapture Academy](https://academy.techtrapture.com), taught by Vishal Bulbule.
 
-- 10 weekends, 20 sessions, 50+ hours. Saturdays and Sundays, 7:00 to 9:30 PM IST
-- 15 seats per cohort, with a hands-on Google Cloud sandbox
-- Lifetime access to recordings, a private community, and a certificate
-- Build production-grade agents with ADK and MCP, not toy demos
-
 **[View and enroll](https://academy.techtrapture.com/batch/master-agentic-ai-with-google-cloud-sep)**
 
 This repository stays free and self-paced.
