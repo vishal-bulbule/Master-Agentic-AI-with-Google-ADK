@@ -1,3 +1,6 @@
+# Author: Vishal Bulbule
+# Date: 2026-09-22
+
 # Node.js
 node_modules/
 npm-debug.log*
@@ -44,12 +47,18 @@ out/
 # Environment / Secrets
 .env
 .env.local
+!.env.example
 .env.*.local
 *.pem
 *.key
 *.crt
 *.p12
-*.json
+# Service account keys and OAuth client secrets
+*-sa.json
+*-key.json
+service-account*.json
+credentials*.json
+client_secret*.json
 
 # Cache
 .cache/
@@ -68,3 +77,18 @@ coverage/
 *.tar
 *.gz
 *.7z
+
+# ADK local session store written by `adk run`
+.adk/
+
+# Local SQLite session stores written by the Module 8 samples
+*.db
+*.db-journal
+*.sqlite3
+
+# Linter and type-checker caches
+.ruff_cache/
+.mypy_cache/
+
+# Internal tooling, not published
+scripts/
